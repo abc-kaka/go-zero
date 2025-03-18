@@ -7,34 +7,36 @@ import (
 )
 
 const (
-	category                    = "api"
-	configTemplateFile          = "config.tpl"
-	contextTemplateFile         = "context.tpl"
-	etcTemplateFile             = "etc.tpl"
-	handlerTemplateFile         = "handler.tpl"
-	handlerTestTemplateFile     = "handler_test.tpl"
-	logicTemplateFile           = "logic.tpl"
-	logicTestTemplateFile       = "logic_test.tpl"
-	mainTemplateFile            = "main.tpl"
-	middlewareImplementCodeFile = "middleware.tpl"
-	routesTemplateFile          = "routes.tpl"
-	routesAdditionTemplateFile  = "route-addition.tpl"
-	typesTemplateFile           = "types.tpl"
+	category                            = "api"
+	configTemplateFile                  = "config.tpl"
+	contextTemplateFile                 = "context.tpl"
+	etcTemplateFile                     = "etc.tpl"
+	handlerTemplateFile                 = "handler.tpl"
+	handlerTestTemplateFile             = "handler_test.tpl"
+	logicTemplateFile                   = "logic.tpl"
+	logicTestTemplateFile               = "logic_test.tpl"
+	mainTemplateFile                    = "main.tpl"
+	middlewareImplementCodeFile         = "middleware.tpl"
+	middlewareUserAuthImplementCodeFile = "middleware-user-auth.tpl"
+	routesTemplateFile                  = "routes.tpl"
+	routesAdditionTemplateFile          = "route-addition.tpl"
+	typesTemplateFile                   = "types.tpl"
 )
 
 var templates = map[string]string{
-	configTemplateFile:          configTemplate,
-	contextTemplateFile:         contextTemplate,
-	etcTemplateFile:             etcTemplate,
-	handlerTemplateFile:         handlerTemplate,
-	handlerTestTemplateFile:     handlerTestTemplate,
-	logicTemplateFile:           logicTemplate,
-	logicTestTemplateFile:       logicTestTemplate,
-	mainTemplateFile:            mainTemplate,
-	middlewareImplementCodeFile: middlewareImplementCode,
-	routesTemplateFile:          routesTemplate,
-	routesAdditionTemplateFile:  routesAdditionTemplate,
-	typesTemplateFile:           typesTemplate,
+	configTemplateFile:                  configTemplate,
+	contextTemplateFile:                 contextTemplate,
+	etcTemplateFile:                     etcTemplate,
+	handlerTemplateFile:                 handlerTemplate,
+	handlerTestTemplateFile:             handlerTestTemplate,
+	logicTemplateFile:                   logicTemplate,
+	logicTestTemplateFile:               logicTestTemplate,
+	mainTemplateFile:                    mainTemplate,
+	middlewareImplementCodeFile:         middlewareImplementCode,
+	middlewareUserAuthImplementCodeFile: middlewareUserAuthImplementCodeFile,
+	routesTemplateFile:                  routesTemplate,
+	routesAdditionTemplateFile:          routesAdditionTemplate,
+	typesTemplateFile:                   typesTemplate,
 }
 
 // Category returns the category of the api files.

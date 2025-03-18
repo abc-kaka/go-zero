@@ -1,9 +1,11 @@
 package config
 
-import {{.authImport}}
-
+import (
+    "common/config"
+    {{.authImport}}
+)
 type Config struct {
-	rest.RestConf
+    config.APIConfig
 	{{.auth}}
 	{{.jwtTrans}}
 }

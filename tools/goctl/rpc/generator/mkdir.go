@@ -210,8 +210,9 @@ func mkdir(ctx *ctx.ProjectContext, proto parser.Proto, conf *conf.Config, c *ZR
 func (d *defaultDirContext) SetPbDir(pbDir, grpcDir string) {
 	d.inner[pb] = Dir{
 		Filename: pbDir,
-		Package:  filepath.ToSlash(filepath.Join(d.ctx.Path, strings.TrimPrefix(pbDir, d.ctx.Dir))),
-		Base:     filepath.Base(pbDir),
+		//Package:  filepath.ToSlash(filepath.Join(d.ctx.Path, strings.TrimPrefix(pbDir, d.ctx.Dir))),
+		Package: filepath.ToSlash(filepath.Join("proto", filepath.Base(pbDir))),
+		Base:    filepath.Base(pbDir),
 	}
 
 	d.inner[protoGo] = Dir{

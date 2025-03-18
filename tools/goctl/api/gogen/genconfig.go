@@ -8,7 +8,6 @@ import (
 	"github.com/zeromicro/go-zero/tools/goctl/api/spec"
 	"github.com/zeromicro/go-zero/tools/goctl/config"
 	"github.com/zeromicro/go-zero/tools/goctl/util/format"
-	"github.com/zeromicro/go-zero/tools/goctl/vars"
 )
 
 const (
@@ -46,8 +45,8 @@ func genConfig(dir string, cfg *config.Config, api *spec.ApiSpec) error {
 	for _, item := range jwtTransNames {
 		jwtTransList = append(jwtTransList, fmt.Sprintf("%s %s", item, jwtTransTemplate))
 	}
-	authImportStr := fmt.Sprintf("\"%s/rest\"", vars.ProjectOpenSourceURL)
-
+	//authImportStr := fmt.Sprintf("\"%s/rest\"", vars.ProjectOpenSourceURL)
+	authImportStr := ""
 	return genFile(fileGenConfig{
 		dir:             dir,
 		subdir:          configDir,

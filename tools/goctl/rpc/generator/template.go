@@ -19,6 +19,7 @@ const (
 	serverTemplateFile                = "server.tpl"
 	serverFuncTemplateFile            = "server-func.tpl"
 	svcTemplateFile                   = "svc.tpl"
+	svcModelTemplateFile              = "svc-model.tpl"
 	rpcTemplateFile                   = "template.tpl"
 )
 
@@ -32,6 +33,7 @@ var templates = map[string]string{
 	serverTemplateFile:        serverTemplate,
 	serverFuncTemplateFile:    functionTemplate,
 	svcTemplateFile:           svcTemplate,
+	svcModelTemplateFile:      svcModelTemplate,
 	rpcTemplateFile:           rpcTemplateText,
 }
 
