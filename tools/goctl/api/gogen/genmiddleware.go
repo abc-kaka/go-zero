@@ -2,7 +2,6 @@ package gogen
 
 import (
 	_ "embed"
-	"log"
 	"strings"
 
 	"github.com/zeromicro/go-zero/tools/goctl/api/spec"
@@ -18,7 +17,6 @@ var middlewareUserAuthImplementCode string
 
 func genMiddleware(dir string, cfg *config.Config, api *spec.ApiSpec) error {
 	middlewares := getMiddleware(api)
-	log.Println(middlewares)
 	for _, item := range middlewares {
 		middlewareFilename := strings.TrimSuffix(strings.ToLower(item), "middleware") + "_middleware"
 		filename, err := format.FileNamingFormat(cfg.NamingFormat, middlewareFilename)
@@ -30,8 +28,7 @@ func genMiddleware(dir string, cfg *config.Config, api *spec.ApiSpec) error {
 		templateFile := middlewareImplementCodeFile
 		builtinTemplate := middlewareImplementCode
 		if item == "UserAuthInterceptor" {
-			templateFile = middlewareUserAuthImplementCodeFile
-			builtinTemplate = middlewareUserAuthImplementCode
+			continue
 		}
 		err = genFile(fileGenConfig{
 			dir:             dir,

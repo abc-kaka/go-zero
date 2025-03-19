@@ -30,13 +30,21 @@ func genServiceContext(dir, rootPkg string, cfg *config.Config, api *spec.ApiSpe
 	for _, item := range middlewares {
 		middlewareStr += fmt.Sprintf("%s rest.Middleware\n", item)
 		name := strings.TrimSuffix(item, "Middleware") + "Middleware"
-		middlewareAssignment += fmt.Sprintf("%s: %s,\n", item,
-			fmt.Sprintf("middleware.New%s().%s", strings.Title(name), "Handle"))
+		if item == "UserAuthInterceptor" {
+			middlewareAssignment += "UserAuthInterceptor: middleware.NewAuthenticationMiddleware().Handle, \n"
+		} else {
+			middlewareAssignment += fmt.Sprintf("%s: %s,\n", item,
+				fmt.Sprintf("middleware.New%s().%s", strings.Title(name), "Handle"))
+		}
 	}
 
 	configImport := "\"" + pathx.JoinPackages(rootPkg, configDir) + "\""
 	if len(middlewareStr) > 0 {
-		configImport += "\n\t\"" + pathx.JoinPackages(rootPkg, middlewareDir) + "\""
+		if len(middlewares) == 1 && middlewares[0] == "UserAuthInterceptor" {
+			configImport += "\n\t\"common/middleware\""
+		} else {
+			configImport += "\n\t\"" + pathx.JoinPackages(rootPkg, middlewareDir) + "\""
+		}
 		configImport += fmt.Sprintf("\n\t\"%s/rest\"", vars.ProjectOpenSourceURL)
 	}
 
