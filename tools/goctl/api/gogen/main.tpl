@@ -17,7 +17,7 @@ func main() {
 
 	var c config.Config
 	xconfig.Load(&c, *configFile)
-	tool.ApiRegisterTool(c.APIConfig)
+	tool.ApiRegisterTool(&c.APIConfig)
 
 	server := rest.MustNewServer(c.RestConf)
 	defer server.Stop()
