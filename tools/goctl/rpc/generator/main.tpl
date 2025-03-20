@@ -22,7 +22,7 @@ func main() {
 
 	var c config.Config
 	xconfig.Load(&c, *configFile)
-	tool.RpcRegisterTool(c.RPCConfig)
+	tool.RpcRegisterTool(&c.RPCConfig)
 	ctx := svc.NewServiceContext(c)
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {
