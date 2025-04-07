@@ -1,6 +1,7 @@
 package main
 
 import (
+	"common/middleware"
     "common/tool"
 	"common/util/xconfig"
 	"flag"
@@ -22,6 +23,8 @@ func main() {
 	server := rest.MustNewServer(c.RestConf)
 	defer server.Stop()
 
+
+	server.Use(middleware.NewCommonMiddleware().Handle)
 	ctx := svc.NewServiceContext(c)
 	handler.RegisterHandlers(server, ctx)
 
